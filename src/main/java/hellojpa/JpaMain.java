@@ -17,20 +17,17 @@ public class JpaMain {
         transaction.begin();
 
         try {
+
+            //비영속 상태
             Member member = new Member();
-            member.setName("Davinci");
+            member.setId(100L);
+            member.setName("JUNGHOJONG");
+
+            //영속 상태
+            System.out.println("=== before ===");
             entityManager.persist(member);
-
-//            Member member1 = entityManager.find(Member.class, member.getId());
-//            System.out.println("name : " + member1.getName());
-//            System.out.println("id : " +member1.getId());
-//            member1.setName("change");
-
-            List<Member> result = entityManager.createQuery("select m from Member m", Member.class)
-                    .getResultList();
-            for (Member tempMember : result) {
-                System.out.println("member.name : " + tempMember.getName());
-            }
+//            entityManager.detach(member);
+            System.out.println("=== after ===");
 
             transaction.commit();
         } catch (Exception e) {
