@@ -19,24 +19,7 @@ public class JpaMain {
             Member member1 = new Member();
             member1.setId(150L);
             member1.setName("A");
-
             entityManager.persist(member1);
-            entityManager.flush();
-            entityManager.clear();
-
-            System.out.println("=====================");
-            Member findedMember1 = entityManager.find(Member.class, 150L);
-
-            entityManager.close();
-            System.out.println("++++++++++++++++");
-            Member findedMember2 = entityManager.find(Member.class, 150L);
-
-            System.out.println("======================");
-
-            Member member2 = new Member();
-            member2.setId(151L);
-            member2.setName("B");
-
 
             transaction.commit();
         } catch (Exception e) {
